@@ -1,5 +1,6 @@
-import React from 'react';
+import {supabase} from "../api/client";
+import React from "react";
 
-export default function notifications() {
+export default function Notifications() {
     
 }

@@ -1,5 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import "./login.css";
 import {supabase} from "../api/client";
 import { useState } from 'react';
@@ -17,11 +15,6 @@ export default function Auth() {
         alert("Oops! Looks like either your account/password is incorrect or your account doesn't exist!");
       }
     }
-
-    async function signOut() {
-    const { error } = await supabase.auth.signOut()
-    }
-
     async function signUp(accountEmail: any, accountPassword: any) {
     const { data, error } = await supabase.auth.signUp({
     email: accountEmail,
@@ -40,9 +33,10 @@ export default function Auth() {
     return (
       <div
         className={
-          "h-screen flex flex-col justify-center items-center"
+          "h-screen bg-loginClimate bg-cover bg-no-repeat flex flex-col justify-center items-center"
         }
       >
+        <div className="w-full h-full bg-loginColor rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center">
         <h1 
           className={
             "font-bold text-center text-4xl text-green-600"
@@ -50,15 +44,14 @@ export default function Auth() {
         >
           Login
         </h1>
-        <form onSubmit={handleSubmit}>
           <div
           className=""
           >
           <label
-          className="font-medium text-lg">
+          className="font-bold font-serif text-lg text-white">
             Email:
             <input
-            className="bg-gray-100 border py-1 px-3 mr-3 rounded mb-2 w-full"
+            className="bg-gray-100 text-black border-blue-400 border-4 border py-1 px-3 mr-3 rounded mb-2 w-full"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -69,20 +62,23 @@ export default function Auth() {
           className=""
           >
           <label
-          className="font-medium text-lg">
+          className="font-bold font-serif text-lg text-white">
             Password:
             <input
-            className={"bg-gray-100 border py-1 px-3 mr-3 rounded mb-2 w-full"}
+            className={"bg-gray-100 text-black border-blue-400 border-4 border py-1 px-3 mr-3 rounded mb-2 w-full"}
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           </div>
-          <input type="submit" className="w-full mt-4"/>
-        </form>
-        <button onClick={handleSignUp} className="w-full mt-4">Sign up</button>
-        
-      </div>
+          <button onClick={handleSubmit} className="w-40 mt-4 text-white font-bold bg-blue-900	border-b-4 border-slate-500 rounded hover:scale-125">
+            Sign in
+          </button>
+        <button onClick={handleSignUp} className="w-40 mt-4 text-white font-bold bg-blue-900	border-b-4 border-slate-500 rounded hover:scale-125">
+          Sign up
+        </button>
+        </div>
+        </div>
     );
 }
