@@ -12,38 +12,18 @@ export default function Mainpage() {
     const handleSignOut = () => {
         signOut();
     }
-    const climatiq = fetch("./climatiq.json")
-    .then(resp => resp.json()).then();
-    const fetchRes = fetch(
-        'https://beta4.api.climatiq.io/estimate' , {
-            method: 'POST',
-            body: JSON.stringify(
-                {
-                emission_factor: {
-                    id: "da80d5f9-7fb2-4cd7-aa45-781479499845"
-                },
-                parameters: {
-                    energy: 900,
-                    energy_unit: "kWh"
-                }
-            }),
-            headers: {
-                'Authorization': 'Bearer G3FQHS5WVC4H1EP2D6ETNEGK4AFM'
-            }
-        })
-    .then(response => response.json())
-    .then(d => {console.log(d)});
     return (
         <div className={
-            "h-screen bg-loginClimate bg-cover bg-no-repeat"
+            "h-screen bg-loginClimate bg-cover bg-no-repeat overflow-y-auto flex flex-col justify-center items-center"
             }
         >
         <div className={
-            "top-0 w-full h-8 bg-black"
+            "top-0 w-full h-2 bg-green-600 bg-opacity-90 rounded"
             }
-            ></div>
+            >
+            </div>
         <div className={
-            "w-full h-16 bg-white flex"
+            "w-full h-16 bg-neutral-100 flex bg-opacity-80"
         }>
             <BrowserRouter>
             <div className="m-6 transition delay-100 duration-300 hover:text-green-500">
@@ -66,15 +46,21 @@ export default function Mainpage() {
                     Map
                 </NavLink>
             </div>
+            <Routes>
+                <Route path = "/Pages/carbonsurvey" element = {<Carbonsurvey/>} />
+                <Route path = "/Pages/notifications" element = {<Notifications/>}/>
+                <Route path = "/Pages/map" element = {<Map/>}/>
+            </Routes>
             </BrowserRouter>
-            <div className="text-slate-700 transition delay-150 duration-300 hover:text-white">
-            <div className="absolute right-12 top-12 border-1 border-slate-500 rounded py-1 px-2 scale-125 transition delay-150 duration-300 hover:bg-slate-700">
+            <div className="text-slate-700 transition delay-25 duration-300 hover:text-white">
+            <div className="absolute right-12 top-7 font-serif text-sm border-1 border-slate-500 rounded py-1 px-2 scale-125 transition delay-25 duration-300 hover:bg-slate-700">
                 <button onClick={signOut}>
                     Sign out
                 </button>
             </div>
             </div>
         </div>
+        <div className="w-full h-full bg-loginColor bg-opacity-95 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center"></div>
         </div>
     );
 }
