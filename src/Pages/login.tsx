@@ -36,10 +36,10 @@ export default function Auth() {
           "h-screen bg-loginClimate bg-cover bg-no-repeat flex flex-col justify-center items-center"
         }
       >
-        <div className="w-full h-full bg-loginColor rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center">
+        <div className="w-full h-full bg-loginColor rounded-lg bg-opacity-90 shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center">
         <h1 
           className={
-            "font-bold text-center text-4xl text-green-600"
+            "font-bold font-mono text-center text-4xl text-green-600"
           }
         >
           Login
@@ -48,10 +48,10 @@ export default function Auth() {
           className=""
           >
           <label
-          className="font-bold font-serif text-lg text-white">
+          className="font-serif text-lg text-zinc-300">
             Email:
             <input
-            className="bg-gray-100 text-black border-blue-400 border-4 border py-1 px-3 mr-3 rounded mb-2 w-full"
+            className="bg-slate-700 text-zinc-300 border-slate-500 border-4 border py-1 px-3 mr-3 rounded mb-2 w-full"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -62,10 +62,10 @@ export default function Auth() {
           className=""
           >
           <label
-          className="font-bold font-serif text-lg text-white">
+          className="font-serif text-lg text-zinc-300">
             Password:
             <input
-            className={"bg-gray-100 text-black border-blue-400 border-4 border py-1 px-3 mr-3 rounded mb-2 w-full"}
+            className={"bg-slate-700 text-zinc-300 border-slate-500 border-4 border py-1 px-3 mr-3 rounded mb-2 w-full"}
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
